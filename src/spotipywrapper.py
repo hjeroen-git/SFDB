@@ -93,3 +93,20 @@ class SpotiWrapper():
         if to_cache:
             pass
         return tracks_from_album
+    
+
+    def get_tracks_audio_features(self,track_ids,to_cache=True):
+        tracks_with_audio_features = []
+        offset = 0
+        while offset < len(track_ids):
+            tracks_with_audio_features += self.spotify.audio_features(tracks=track_ids[offset:offset+100])
+            offset+=100
+            print('Waittime...')
+            time.sleep(API_WAITTIME)
+        if to_cache:
+            tracks_audio_features = []
+            for track in tracks_with_audio_features:
+                if track:
+                    tracks_audio_features += self.spotify_cleaner.get_track_audio_features(track)
+            self.spotify_database.insert_rows('tracks_audio_features',tracks_audio_features)
+        return tracks_audio_features

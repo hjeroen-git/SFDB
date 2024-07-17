@@ -115,3 +115,20 @@ class SpotifyCleaner():
             }
             cleaned_dicts.append(cleaned_dict)
         return cleaned_dicts
+    
+    def get_track_audio_features(self,track):
+        cleaned_dict = {}
+        cleaned_dict['id'] = track['id']
+        cleaned_dict['acousticness'] = track['acousticness']
+        cleaned_dict['danceability'] = track['danceability']
+        cleaned_dict['energy'] = track['energy']
+        cleaned_dict['instrumentalness'] = track['instrumentalness']
+        cleaned_dict['liveness'] = track['liveness']
+        cleaned_dict['loudness'] = track['loudness']
+        cleaned_dict['speechiness'] = track['speechiness']    
+        cleaned_dict['valence'] = track['valence']
+        cleaned_dict['key'] = track['key']
+        cleaned_dict['mode'] = track['mode']
+        cleaned_dict['tempo'] = track['tempo']
+        cleaned_dict['time_signature'] = track['time_signature']
+        return [cleaned_dict]

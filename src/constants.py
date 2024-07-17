@@ -30,6 +30,8 @@ COLUMNS_IN_TABLE = {
         'track_number'
     ],
     'tracks_audio_features':[
+        'id',
+        'acousticness',
         'danceability',
         'energy',
         'instrumentalness',

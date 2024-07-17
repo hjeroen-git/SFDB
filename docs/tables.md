@@ -71,14 +71,14 @@ The `tracks_audio_features` table stores information about the users of the appl
 | `danceability`    | REAL      |                      |                                   |
 | `energy`          | REAL      |                      |                                   |
 | `instrumentalness`| REAL      |                      |                                   |
-| `key`             | INTEGER   |                      |                                   |
 | `liveness`        | REAL      |                      |                                   |
 | `loudness`        | REAL      |                      |                                   |
-| `mode`            | INTEGER   |                      |                                   |
 | `speechiness`     | REAL      |                      |                                   |
+| `valence`         | REAL      |                      |                                   |
+| `key`             | INTEGER   |                      |                                   |
+| `mode`            | INTEGER   |                      |                                   |
 | `tempo`           | REAL      |                      |                                   |
 | `time_signature`  | INTEGER   |                      |                                   |
-| `valence`         | REAL      |                      |                                   |
 
 
 ## Table: playlists
