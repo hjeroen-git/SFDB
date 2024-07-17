@@ -93,5 +93,3 @@ class SpotiWrapper():
         if to_cache:
             pass
         return tracks_from_album
-    
-

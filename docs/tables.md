@@ -6,7 +6,7 @@ This document describes the database schema for MyProject. The database is imple
 - `tracks`
 - `tracks_audio_features`
 - `playlists`
-- `image_url`
+- `images`
 
 And the following junctiontables:
 - `artists_albums`
