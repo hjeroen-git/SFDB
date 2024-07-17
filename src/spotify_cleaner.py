@@ -58,6 +58,8 @@ class SpotifyCleaner():
         cleaned_dict['total_tracks'] = album['total_tracks']
         if album['images'] and len(album['images']) > 0:
             cleaned_dict['image_url'] = album['images'][0]['url']
+        else: 
+            cleaned_dict['image_url'] = None
         cleaned_dict['release_date'] = album['release_date']
         cleaned_dict['release_date_precision'] = album['release_date_precision']
         return [cleaned_dict]
