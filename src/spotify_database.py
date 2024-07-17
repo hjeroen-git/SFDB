@@ -124,11 +124,14 @@ class SpotifyDatabase:
         else:
             artist_column = 'name' 
         self.cursor.execute(f'''
-            SELECT artists.{artist_column}
+            SELECT artists.{artist_column}, COUNT(playlists_tracks.track_id)
             FROM artists
             JOIN tracks_artists ON artists.id = tracks_artists.artist_id
             JOIN playlists_tracks ON tracks_artists.track_id = playlists_tracks.track_id
             JOIN playlists ON playlists_tracks.playlist_id = playlists.id
-            WHERE playlists.name = '{playlist_name}';''')
+            WHERE playlists.name = '{playlist_name}'
+            GROUP BY artists.{artist_column}
+            ORDER BY COUNT(playlists_tracks.track_id) DESC;''')
         artists = self.cursor.fetchall()
-        return [artist[0] for artist in artists]
+        return artists
+    
