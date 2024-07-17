@@ -78,8 +78,8 @@ class SpotifyDatabase:
         
 
     def assert_row(self,rowtype,row):
-        if list(row.keys()) != constants.COLUMNS_IN_TABLE[rowtype]:
-            raise AssertionError(f"Mismatch between given and expected columns. Expected {constants.COLUMNS_IN_TABLE[rowtype]}, but got {row.columns}")
+        if set(row.keys()) != set(constants.COLUMNS_IN_TABLE[rowtype]):
+            raise AssertionError(f"Mismatch between given and expected columns. Expected {constants.COLUMNS_IN_TABLE[rowtype]}, but got {list(row.keys())}")
         
 
     def get_artist_id_from_artist_name(self,artist_name):
@@ -135,3 +135,17 @@ class SpotifyDatabase:
         artists = self.cursor.fetchall()
         return artists
     
+    def get_playlist_tracks(self,playlist_name,get_id=False):
+        if get_id:
+            tracks_column = 'id'
+        else:
+            tracks_column = 'name' 
+        self.cursor.execute(f'''
+            SELECT tracks.{tracks_column}
+            FROM tracks
+            JOIN playlists_tracks ON tracks.id = playlists_tracks.track_id
+            JOIN playlists ON playlists_tracks.playlist_id = playlists.id
+            WHERE playlists.name = '{playlist_name}';''')
+        tracks = self.cursor.fetchall()
+        return tracks
+        
