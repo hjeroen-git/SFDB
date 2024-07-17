@@ -2,3 +2,4 @@ venv/
 src/__pycache__/
 .cache
 src/spotify_login_credentials.py
+database/
